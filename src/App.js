@@ -1,12 +1,12 @@
 import './App.css';
 import { useState } from "react";
 import CardBox from './Components/CardBox';
-import { AppBar, Box, Grid, Button, Typography, Toolbar} from '@mui/material';
+import SubmitBox from './Components/SubmitBox';
+import { AppBar, Box, Grid, Typography, Toolbar} from '@mui/material';
 import logo from './Assets/logo.png'
 
 function App() {
 
-  const [csvFile, setCsvFile] = useState();
   const [csvArray, setCsvArray] = useState([]);
 
   var totalLength = 0;
@@ -16,38 +16,10 @@ function App() {
   var commonRiver = [];
   var commonRiverObj = [];
   var allTeams = [];
-  
-
-  const handleSubmit = () => {
-    const file = csvFile;
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-        const text = e.target.result;
-        processText(text);
-    }
-
-    reader.readAsText(file, 'ISO-8859-1');
-}
-
-  const processText = (text) => {
-      const lines = text.slice(text.indexOf('\n')+1).split('\n');
-      const headers= ["Nombre", "Edad", "Equipo", "EstadoCivil", "Estudios"];
-
-      const newArray = lines.map( lines => {
-        const values = lines.split(";");
-        const eachObject = headers.reduce((obj, header, i) => {
-          obj[header] = values[i];
-          return obj;
-            }, {})
-          return eachObject;
-        })
-      setCsvArray(newArray);
-    };
 
     const calcInfo = (array) => {
       totalLength = Object.keys(array).length;
-      csvArray.forEach((i) => {
+      array.forEach((i) => {
         if (i.Equipo==='Racing') {
           totalRacing+=1;
           ageRacing+=parseInt(i.Edad)
@@ -157,37 +129,9 @@ function App() {
       : 
       <Grid container sx={{backgroundColor:'#282c34', minHeight:'100vh', overflow:'hidden', overflowY:'hidden'}} direction="column" alignItems="start" justifyContent="center" >
           <Grid item>
-            <Box sx={{backgroundColor:'white', borderRadius:3, padding:5, textAlign:'center', height:'250px', marginLeft:"100px"}}>
-              <label htmlFor="csvFile">
-                <Grid container>
-                  <Grid item>
-                    <Button variant="contained" component="span" sx={{borderRadius:'50%', height: '60px', width: '60px', fontSize: '40px'}}>+</Button>
-                  </Grid>
-                  <Grid item>
-                  <Typography variant='h6' sx={{cursor:'pointer', marginLeft:2}}>Añade el archivo socios.csv</Typography>
-                  <input
-                      type='file'
-                      accept='.csv'
-                      id='csvFile'
-                      onChange={(e) => {
-                          setCsvFile(e.target.files[0])
-                      }}
-                  />
-                  </Grid>
-                </Grid>
-              </label>
-              <Button
-                sx={{marginTop:"100px", width:'150px', borderRadius:3}}
-                variant="contained"
-                onClick={(e) => {
-                  e.preventDefault();
-                  if(csvFile) {
-                    handleSubmit();
-                  }
-                }}>
-                Enviar
-              </Button>
-            </Box>
+            <SubmitBox 
+              setCsvArray={setCsvArray}
+            />
           </Grid>
       </Grid>
       }
