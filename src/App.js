@@ -69,10 +69,10 @@ function App() {
   return (
     <div className="App">
       <AppBar sx={{padding:'10px', backgroundColor: '#0e0f0f'}}>
-      <Toolbar>
-        <img src={logo} alt="logo" width="40px" height="40px"/>
+      <Toolbar >
+        <img src={logo} alt="logo" width="40px" height="40px" style={{cursor:'pointer'}} onClick={() => window.location.reload()}/>
         <Box>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft:1}}>Aplicación de Socios</Typography>
+          <Typography variant="h6" component="div" onClick={() => window.location.reload()} sx={{ flexGrow: 1, marginLeft:1, cursor:'pointer'}}>Aplicación de Socios</Typography>
         </Box>
       </Toolbar>
       </AppBar>
