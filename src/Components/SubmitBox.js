@@ -34,23 +34,25 @@ export default function SubmitBox({setCsvArray}) {
         };
     
     return (
-        <Box sx={{backgroundColor:'white', borderRadius:3, padding:5, textAlign:'center', height:'250px', marginLeft:"100px"}}>
+        <Box sx={{backgroundColor:'white', borderRadius:3, padding:5, textAlign:'center', height:'250px'}}>
         <label htmlFor="csvFile">
           <Grid container>
-            <Grid item>
+            <Grid item xs={12} md={2}>
               <Button variant="contained" component="span" sx={{borderRadius:'50%', height: '60px', width: '60px', fontSize: '40px'}}>+</Button>
             </Grid>
-            <Grid item>
-            <Typography variant='h6' sx={{cursor:'pointer', marginLeft:2}}>Añade el archivo socios.csv</Typography>
-            <input
-                type='file'
-                accept='.csv'
-                id='csvFile'
-                onChange={(e) => {
+            <Grid item xs={12} md={10}>
+              <Typography variant='h6' sx={{cursor:'pointer', marginLeft:2}}>Añade el archivo socios.csv</Typography>
+              {csvFile ? <Typography variant='subtitle1' sx={{cursor:'pointer'}}>{csvFile.name}</Typography>: <Typography variant='subtitle1' sx={{cursor:'pointer'}}>No hay un archivo seleccionado</Typography>}
+              <input
+                  type='file'
+                  accept='.csv'
+                  id='csvFile'
+                  onChange={(e) => {
                     setCsvFile(e.target.files[0])
                     setDisableBool(false)
-                }}
-            />
+                  }}
+                  style={{visibility:'hidden'}}
+              />
             </Grid>
           </Grid>
         </label>

@@ -9,13 +9,13 @@ function App() {
 
   const [csvArray, setCsvArray] = useState([]);
 
-  var totalLength = 0;
-  var totalRacing = 0;
-  var ageRacing = 0;
-  var marriedPeople = [];
-  var commonRiver = [];
-  var commonRiverObj = [];
-  var allTeams = [];
+  let totalLength = 0;
+  let totalRacing = 0;
+  let ageRacing = 0;
+  let marriedPeople = [];
+  let commonRiver = [];
+  let commonRiverObj = [];
+  let allTeams = [];
 
     const calcInfo = (array) => {
       totalLength = Object.keys(array).length;
@@ -110,7 +110,7 @@ function App() {
         <Grid item md={2}/>
         <Grid item xs={12} md={4}>
           <CardBox
-            title="Los nombres mas comúnes entre los hinchas de River son:"
+            title="Los nombres más comunes entre los hinchas de River son:"
             table={commonRiverObj}
             tableBool={true}
           />
@@ -127,7 +127,7 @@ function App() {
         <Grid item md={4}/>
       </Grid>
       : 
-      <Grid container sx={{backgroundColor:'#282c34', minHeight:'100vh', overflow:'hidden', overflowY:'hidden'}} direction="column" alignItems="start" justifyContent="center" >
+      <Grid container sx={{backgroundColor:'#282c34', minHeight:'100vh'}} direction="column" alignItems="start" justifyContent="center">
           <Grid item>
             <SubmitBox 
               setCsvArray={setCsvArray}
