@@ -3,13 +3,15 @@ import DataTable from './DataTable';
 
 export default function CardBox(props) {
 
-    var title=props.title;
-    var tableBool=props.tableBool
+    let title=props.title;
+    let tableBool=props.tableBool
+    let table;
+    let text;
 
     if (tableBool===true) {
-        var table=props.table
+        table=props.table
     } else {
-        var text=props.text;
+        text=props.text;
     }
 
     return (

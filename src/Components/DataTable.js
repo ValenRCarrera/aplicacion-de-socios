@@ -3,8 +3,8 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Table
 
 export default function DataTable(props){
     
-    var array=[];
-    var headers=[];
+    let array=[];
+    let headers=[];
 
     if (props.data != null){ 
         array=props.data

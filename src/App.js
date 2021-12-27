@@ -18,21 +18,28 @@ function App() {
   let allTeams = [];
 
     const calcInfo = (array) => {
+
       totalLength = Object.keys(array).length;
+
       array.forEach((i) => {
+
         if (i.Equipo==='Racing') {
           totalRacing+=1;
           ageRacing+=parseInt(i.Edad)
         }
+
         if (i.EstadoCivil === 'Casado' && i.Estudios=== 'Universitario\r' ) {
           marriedPeople.push({"Nombre":i.Nombre, "Edad":i.Edad, "Equipo":i.Equipo});
         }
+
         if (i.Equipo==='River') {
           commonRiver.push(i.Nombre);
         }
+
         if (allTeams.some(equipo => equipo.Nombre === i.Equipo) === false && i.Equipo !== undefined) {
           allTeams.push({"Nombre": i.Equipo, "Edad": parseInt(i.Edad), "Total": 1, "Min": parseInt(i.Edad), "Max": parseInt(i.Edad)})
         } 
+        
         if (allTeams.some(equipo => equipo.Nombre === i.Equipo) === true) {
           const objIndex = allTeams.findIndex((obj => obj.Nombre === i.Equipo));
           allTeams[objIndex].Edad += parseInt(i.Edad);
@@ -127,12 +134,13 @@ function App() {
         <Grid item md={4}/>
       </Grid>
       : 
-      <Grid container sx={{backgroundColor:'#282c34', minHeight:'100vh'}} direction="column" alignItems="start" justifyContent="center">
-          <Grid item>
-            <SubmitBox 
-              setCsvArray={setCsvArray}
-            />
-          </Grid>
+      <Grid container sx={{backgroundColor:'#282c34', minHeight:'100vh'}} alignItems="center" justifyContent="start">
+        <Grid item md={1}/>
+        <Grid item>
+          <SubmitBox 
+            setCsvArray={setCsvArray}
+          />
+        </Grid>
       </Grid>
       }
     </div>
