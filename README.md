@@ -7,6 +7,7 @@ Aplicación web que lee el contenido de socios.csv, y muestra en la pantalla inf
 
 ## Requerimientos
 
+Mostrar información de:
 1. Cantidad total de personas registradas. 
 2. El promedio de edad de los socios de Racing. 
 3. Un listado con las 100 primeras personas casadas, con estudios 
