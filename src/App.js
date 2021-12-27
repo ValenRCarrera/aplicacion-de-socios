@@ -19,8 +19,6 @@ function App() {
 
     const calcInfo = (array) => {
 
-      totalLength = Object.keys(array).length;
-
       array.forEach((i) => {
 
         if (i.Equipo==='Racing') {
@@ -53,8 +51,13 @@ function App() {
         }
       })
 
+      //Cantidad total de personas registradas.
+      totalLength = Object.keys(array).length;
+
+      //Un listado con las 100 primeras personas casadas, con estudios Universitarios, ordenadas de menor a mayor según su edad. Por cada persona, mostrar: nombre, edad y equipo. 
       marriedPeople = marriedPeople.slice(0, 100).sort((a, b) => parseInt(a.Edad) - parseInt(b.Edad));
 
+      //Un listado con los 5 nombres más comunes entre los hinchas de River.
       commonRiver = commonRiver.reduce((counts, num) => {
         counts[num] = (counts[num] || 0) + 1;
         return counts;
@@ -64,6 +67,7 @@ function App() {
         commonRiverObj.push({"Nombre": i[0], "Total": i[1]})
       ))
 
+      //Un listado, ordenado de mayor a menor según la cantidad de socios, que enumere, junto con cada equipo, el promedio de edad de sus socios, la menor edad registrada y la mayor edad registrada.
       allTeams = allTeams.map((i) => {
         return {...i, Promedio: (i.Edad / i.Total).toFixed(2)}
       })
